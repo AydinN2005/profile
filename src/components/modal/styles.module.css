@@ -1,0 +1,26 @@
+.modal {
+    background: var(--primary-bg);
+    padding: 16px 16px 32px 16px;
+    border-top-right-radius: 32px;
+    border-top-left-radius: 32px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+}
+
+.line {
+    background: #D7D7D7;
+    width: 32px;
+    height: 4px;
+    border-radius: 12px;
+    margin: 0 auto 16px auto;
+}
+
+.activeModal {
+    bottom: 0;
+}
+
+.disableModal {
+    bottom: -100vh;
+}

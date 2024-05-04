@@ -1,0 +1,38 @@
+.input {
+    padding: 16px;
+    border: 1px solid #646464;
+    border-radius: 12px;
+    font-size: 18px;
+    color: gray;
+    background: var(--primary-bg);
+    width: 100%;
+}
+
+.input input {
+    background: unset;
+    outline: none;
+    width: 100%;
+}
+
+.input select {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.input input:focus {
+    border-color: white;
+}
+
+.icon {
+    position: absolute;
+    top: 20px;
+    right: 18px;
+    cursor: pointer;
+}
+
+input[type="date"]::-webkit-inner-spin-button,
+input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+}

@@ -1,13 +1,57 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@font-face {
+    font-family: openSans;
+    src: url("./assets/fonts/OpenSans-Regular.ttf");
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+:root {
+    --primary-bg: #373737;
+    --primary-bg-2: #272727;
+    --primary-blue: #4285F4;
+}
+
+* {
+    transition: all .3s;
+    font-family: openSans;
+    text-transform: capitalize;
+}
+
+body {
+    background: var(--primary-bg);
+    color: white;
+}
+
+.container {
+    padding: 32px 16px;
+    max-width: 1320px;
+    width: 100%;
+    margin: 0 auto;
+}
+.baseBtn {
+    padding: 12px 24px;
+    border-radius: 12px;
+    width: 100%;
+}
+
+.cancelBtn {
+    background: white;
+    color: var(--primary-blue);
+    margin-right: 16px;
+}
+
+.cancelBtn:hover {
+    background: var(--primary-blue);
+    color: white;
+}
+
+.acceptBtn {
+    background: var(--primary-blue);
+    color: black;
+}
+
+.acceptBtn:hover {
+    background: black;
+    color: var(--primary-blue);
 }
