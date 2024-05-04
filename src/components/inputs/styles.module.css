@@ -12,6 +12,7 @@
     background: unset;
     outline: none;
     width: 100%;
+    text-transform: initial;
 }
 
 .input select {

@@ -7,7 +7,7 @@ function ProfileFooter() {
         <div className={`flex flex-col w-full ${styles.profileFooter}`}>
             <div className={`flex items-center justify-center w-full relative`}>
                 <div className={`flex items-center ${styles.profileFooterBtn}`}>
-                    <FaLocationArrow size={28} color={'black'}/>
+                    <FaLocationArrow size={22} color={'black'}/>
                 </div>
             </div>
             <div className={'flex items-center w-full justify-end'}>

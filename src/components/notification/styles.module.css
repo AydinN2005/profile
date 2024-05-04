@@ -1,0 +1,21 @@
+.notifCard {
+    max-width: 250px;
+    border-radius: 12px;
+    background: white;
+    padding: 16px;
+    position: fixed;
+    top: 48px;
+}
+
+.notifMessage {
+    margin: 0 16px;
+    color: var(--primary-bg);
+}
+
+.notifActive {
+    left: 16px;
+}
+
+.notifDisable {
+    left: -100vw;
+}

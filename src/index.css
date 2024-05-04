@@ -29,10 +29,12 @@ body {
     width: 100%;
     margin: 0 auto;
 }
+
 .baseBtn {
     padding: 12px 24px;
     border-radius: 12px;
     width: 100%;
+    cursor: pointer;
 }
 
 .cancelBtn {
@@ -54,4 +56,18 @@ body {
 .acceptBtn:hover {
     background: black;
     color: var(--primary-blue);
+}
+
+.react-calendar__navigation {
+    display: flex !important;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.react-calendar__navigation__next-button {
+    margin-right: 16px;
+}
+
+.react-calendar__navigation__prev-button {
+    margin-left: 16px;
 }

@@ -27,16 +27,6 @@ let links: routes[] = [
     },
 ]
 
-const userStatus = checkUser()
-if (userStatus) {
-    links.push({
-        id: 4,
-        title: "logout",
-        Icon: IoLogOutOutline,
-        iconColor: 'red'
-    })
-}
-
 export {
     links
 }

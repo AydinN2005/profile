@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {profileLinks} from "./types";
-import {Link} from "react-router-dom";
+import {Link, useLocation, useNavigate} from "react-router-dom";
 import Modal from "../../components/modal/Modal";
 import Overlay from "../../components/overlay/Overlay";
 import styles from "../../components/modal/styles.module.css";
@@ -8,15 +8,22 @@ import LogoutModal from "./LogoutModal";
 
 function ProfileLink({Icon, route, iconColor, title}: profileLinks) {
     const [show, setShow] = useState<boolean>(false);
-    const handleLogout = function (): void {
+    const navigate = useNavigate()
+
+    const handleShow = function (): void {
         setShow(true)
+    }
+    const handleLogout = function (): void {
+        localStorage.removeItem('user')
+        setShow(false)
+        navigate(0)
     }
     const handleCancel = function (): void {
         setShow(false)
     }
     return (
         <>
-            <div onClick={title === 'logout' ? handleLogout : () => {
+            <div onClick={title === 'logout' ? handleShow : () => {
             }}>
                 <Link to={route ? route : '#'} className={'flex items-center'}>
                     <Icon size={24} color={iconColor}/>

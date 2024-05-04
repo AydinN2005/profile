@@ -1,20 +1,15 @@
 import React, {useEffect, useState} from 'react';
 import styles from './styles.module.css'
-import {inputTypes} from "./types";
+import {inputTypes, Value} from "./types";
 import Modal from "../modal/Modal";
 import Overlay from "../overlay/Overlay";
-import {format} from 'date-fns';
-import {DayPicker} from 'react-day-picker';
-import 'react-day-picker/dist/style.css';
+import Calendar from 'react-calendar';
 
 
 function Input({type, name, id, placeholder, Icon, changed, value, dateChanged}: inputTypes<HTMLInputElement>) {
     const [showDate, setShowDate] = useState<boolean>(false);
-    const [selected, setSelected] = useState<Date>();
-    let footer: React.ReactNode = <p>Please pick a day.</p>;
-    if (selected) {
-        footer = <p>You picked {format(selected, 'PP')}.</p>;
-    }
+    const [selected, onChange] = useState<Value>(new Date());
+    const selectedDate = `your selected date : ${selected?.toLocaleString()}`
     const handleClick = function (): void {
         if (type === 'date') {
             setShowDate(!showDate)
@@ -37,7 +32,7 @@ function Input({type, name, id, placeholder, Icon, changed, value, dateChanged}:
                                onChange={changed}
                         />
                         : <input type={'text'} name={name} id={id} style={{paddingRight: '40px'}}
-                                 value={value ? value : 'mm/dd/yyyy'}/>
+                                 value={value ? value.toLocaleString().split(',')[0] : 'mm/dd/yyyy'}/>
                 }
                 <div className={styles.icon} onClick={handleClick}>
                     {Icon ? <Icon size={24} color={'white'}/> : null}
@@ -46,13 +41,10 @@ function Input({type, name, id, placeholder, Icon, changed, value, dateChanged}:
             <Overlay active={showDate}>
                 <Modal active={showDate}>
                     <div className={'flex flex-col w-full'}>
-                        <DayPicker
-                            mode="single"
-                            selected={selected}
-                            onSelect={setSelected}
-                            footer={footer}
-                            className={'flex justify-center items-center'}
-                        />
+                        <Calendar onChange={onChange} value={selected}/>
+                        <p className={'my-4 text-sm'}>
+                            {selectedDate.split(',')[0]}
+                        </p>
                         <div onClick={handleClick} className="baseBtn acceptBtn mt-4 self-end text-center">
                             done
                         </div>
