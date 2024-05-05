@@ -9,9 +9,5 @@ export interface inputTypes<T> {
     Icon?: IconType;
     changed: (e: React.ChangeEvent<T>, date?: Date) => void;
     value: string | undefined;
-    dateChanged: (date: Date | null | [Date | null, Date | null]) => void;
     children?: React.ReactNode
 }
-type ValuePiece = Date | null;
-
-export type Value = ValuePiece | [ValuePiece, ValuePiece];

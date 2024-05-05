@@ -15,7 +15,6 @@
 * {
     transition: all .3s;
     font-family: openSans;
-    text-transform: capitalize;
 }
 
 body {
@@ -40,7 +39,7 @@ body {
 .cancelBtn {
     background: white;
     color: var(--primary-blue);
-    margin-right: 16px;
+    margin-bottom: 16px;
 }
 
 .cancelBtn:hover {

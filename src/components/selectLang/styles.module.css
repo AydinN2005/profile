@@ -1,0 +1,29 @@
+.langBox {
+    /*border: 1px solid #eee;*/
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+    padding: 8px;
+    background: var(--primary-bg-2)
+}
+
+.langBoxItems {
+    position: absolute;
+    top: 38px;
+    left: 0;
+    width: 100%;
+    background: var(--primary-bg-2);
+    border-bottom-right-radius: 12px;
+    border-bottom-left-radius: 12px;
+    cursor: pointer;
+    z-index: 999;
+}
+
+.langBoxItem {
+    font-size: 14px;
+    padding: 8px;
+    border-bottom: 1px solid #eee;
+}
+
+.langBoxItem:last-child {
+    border-bottom: unset;
+}

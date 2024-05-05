@@ -5,11 +5,12 @@ import {MdOutlineMailOutline} from "react-icons/md";
 import {formData} from "./types";
 import SelectInput from "../../components/inputs/SelectInput";
 import Notification from "../../components/notification/Notification";
-import {Value} from "../../components/inputs/types";
 import {useNavigate} from "react-router-dom";
 import {checkUser} from "../../utils/checkUser";
+import {useTranslation} from "react-i18next";
 
 function EditProfileForm() {
+    const {t} = useTranslation()
     const [notif, setNotif] = useState<{ message: string; type: string; active: boolean }>({
         message: "",
         type: '',
@@ -19,15 +20,15 @@ function EditProfileForm() {
         {
             username: '',
             fullName: '',
-            birthday: null,
+            birthday: '',
             email: '',
             gender: "other",
             phoneNumber: ''
         }
     );
     useEffect(() => {
-        if (localStorage.getItem('user')) {
-            const storageData: string | null = localStorage.getItem('user')
+        if (localStorage.getItem('user_profile')) {
+            const storageData: string | null = localStorage.getItem('user_profile')
             const userData: formData = JSON.parse(typeof storageData === 'string' ? storageData : '')
             setFormData({
                 birthday: userData.birthday,
@@ -46,46 +47,46 @@ function EditProfileForm() {
         if (formData.username === '') {
             setNotif({
                 active: true,
-                message: 'fill username',
+                message: t('fillUsername'),
                 type: 'error'
             })
         } else if (formData.fullName === '') {
             setNotif({
                 active: true,
-                message: 'fill full name',
+                message: t('fillFullName'),
                 type: 'error'
             })
         } else if (formData.email === '') {
             setNotif({
                 active: true,
-                message: 'fill email',
+                message: t('fillEmail'),
                 type: 'error'
             })
-        } else if (!formData.birthday === null) {
+        } else if (formData.birthday === '') {
             setNotif({
                 active: true,
-                message: 'fill birthday',
+                message: t('fillBirthday'),
                 type: 'error'
             })
         } else if (formData.gender === '') {
             setNotif({
                 active: true,
-                message: 'fill gender',
+                message: t('fillGender'),
                 type: 'error'
             })
         } else if (formData.phoneNumber === '') {
             setNotif({
                 active: true,
-                message: 'fill phone number',
+                message: t('fillPhonenumber'),
                 type: 'error'
             })
         } else {
             setNotif({
                 active: true,
-                message: 'information updated',
+                message: t('updated'),
                 type: 'success'
             })
-            localStorage.setItem('user', JSON.stringify(formData))
+            localStorage.setItem('user_profile', JSON.stringify(formData))
             navigate('/')
         }
     }
@@ -95,66 +96,53 @@ function EditProfileForm() {
                 changed={(e: React.ChangeEvent<HTMLInputElement>) => {
                     setFormData({...formData, username: e.target.value})
                 }}
-                dateChanged={(data: Value) => {
-                }}
                 value={formData.username}
                 type={"text"}
                 name={'username'}
                 id={'username'}
-                placeholder={'username'}
+                placeholder={t('username')}
             />
             <Input
                 changed={(e: React.ChangeEvent<HTMLInputElement>) => {
                     setFormData({...formData, fullName: e.target.value})
                 }}
-                dateChanged={(data: Value) => {
-                }}
                 value={formData.fullName}
                 type={"text"}
                 name={'fullName'}
                 id={'fullName'}
-                placeholder={'full name'}
+                placeholder={t('fullName')}
             />
             <Input
                 changed={(e: React.ChangeEvent<HTMLInputElement>) => {
+                    setFormData({...formData, birthday: e.target.value})
                 }}
-                dateChanged={(data: Value) => {
-                    setFormData({
-                        ...formData,
-                        birthday: data
-                    })
-                }}
-                value={formData.birthday?.toLocaleString().split(',')[0]}
+                value={formData.birthday}
                 type={"date"}
                 name={'birthDate'}
                 id={'birthDate'}
-                placeholder={'birthday (dd/mm/yyyy)'}
+                placeholder={t('birthday')}
                 Icon={CgCalendarDates}
             />
             <Input
                 changed={(e: React.ChangeEvent<HTMLInputElement>) => {
                     setFormData({...formData, email: e.target.value})
                 }}
-                dateChanged={(data: Value) => {
-                }}
                 value={formData.email}
                 type={"email"}
                 name={'email'}
                 id={'email'}
-                placeholder={'email'}
+                placeholder={t('email')}
                 Icon={MdOutlineMailOutline}
             />
             <Input
                 changed={(e: React.ChangeEvent<HTMLInputElement>) => {
                     setFormData({...formData, phoneNumber: e.target.value})
                 }}
-                dateChanged={(data: Value) => {
-                }}
                 value={formData.phoneNumber}
                 type={"text"}
                 name={'phone'}
                 id={'phone'}
-                placeholder={'phone number'}
+                placeholder={t('phoneNumber')}
             />
             <SelectInput
                 changed={(e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -164,12 +152,12 @@ function EditProfileForm() {
                 name={'gender'}
                 id={'gender'}
             >
-                <option value="other">other</option>
-                <option value="male">male</option>
-                <option value="female">female</option>
+                <option value="other">{t('other')}</option>
+                <option value="male">{t('male')}</option>
+                <option value="female">{t('female')}</option>
             </SelectInput>
             <button className={'baseBtn acceptBtn'} type={'submit'}>
-                update
+                {t('update')}
             </button>
             <Notification message={notif.message} type={notif.type} active={notif.active} close={() => {
                 setNotif({...notif, active: false})

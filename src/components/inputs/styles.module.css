@@ -25,6 +25,14 @@
     border-color: white;
 }
 
+.dateInput {
+    position: absolute;
+    left: 0;
+    padding-right: 16px;
+    z-index: 10;
+    opacity: 0;
+}
+
 .icon {
     position: absolute;
     top: 20px;

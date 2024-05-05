@@ -5,8 +5,10 @@ import Modal from "../../components/modal/Modal";
 import Overlay from "../../components/overlay/Overlay";
 import styles from "../../components/modal/styles.module.css";
 import LogoutModal from "./LogoutModal";
+import {useTranslation} from "react-i18next";
 
 function ProfileLink({Icon, route, iconColor, title}: profileLinks) {
+    const {t} = useTranslation()
     const [show, setShow] = useState<boolean>(false);
     const navigate = useNavigate()
 
@@ -14,7 +16,7 @@ function ProfileLink({Icon, route, iconColor, title}: profileLinks) {
         setShow(true)
     }
     const handleLogout = function (): void {
-        localStorage.removeItem('user')
+        localStorage.removeItem('user_profile')
         setShow(false)
         navigate(0)
     }
@@ -23,7 +25,7 @@ function ProfileLink({Icon, route, iconColor, title}: profileLinks) {
     }
     return (
         <>
-            <div onClick={title === 'logout' ? handleShow : () => {
+            <div onClick={title === t('logOut') ? handleShow : () => {
             }}>
                 <Link to={route ? route : '#'} className={'flex items-center'}>
                     <Icon size={24} color={iconColor}/>

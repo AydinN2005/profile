@@ -2,7 +2,10 @@ import React from 'react';
 import styles from './styles.module.css'
 import { FaLocationArrow } from "react-icons/fa";
 import { FaUser } from "react-icons/fa";
+import {useTranslation} from "react-i18next";
+
 function ProfileFooter() {
+    const {t} = useTranslation()
     return (
         <div className={`flex flex-col w-full ${styles.profileFooter}`}>
             <div className={`flex items-center justify-center w-full relative`}>
@@ -14,7 +17,7 @@ function ProfileFooter() {
                 <div className={`flex flex-col items-center ${styles.profileFooterLink}`}>
                     <FaUser size={24} color={'#4285F4'}/>
                     <span className={'text-xs font-normal'}>
-                        profile
+                        {t('profile')}
                     </span>
                 </div>
             </div>
